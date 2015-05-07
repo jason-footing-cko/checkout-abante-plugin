@@ -1,0 +1,1 @@
+Webhook: example.com/index.php?rt=extension/checkoutapipayment/callback

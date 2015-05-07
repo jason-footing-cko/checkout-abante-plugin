@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<extension>
+    <id>checkoutapipayment</id>
+    <version>1.0.1</version>
+    <type>payment</type>
+    <category>payment</category>
+    <cartversions>
+        <item>1.2</item>
+    </cartversions>
+    <layout></layout>
+    <priority>10</priority>
+    <settings>
+
+        <item id="checkoutapipayment_secret_key">
+            <type required="true">input</type>
+            <default_value></default_value>
+        </item>
+        <item id="checkoutapipayment_public_key">
+            <type required="true">input</type>
+            <default_value></default_value>
+        </item>
+
+        <item id="checkoutapipayment_mode">
+            <type>selectbox</type>
+            <variants>
+                <item>live</item>
+                <item>preprod</item>
+                <item>test</item>
+            </variants>
+        </item>
+        <item id="checkoutapipayment_method">
+            <type>selectbox</type>
+            <variants>
+                <item>authorization_only</item>
+                <item>authorization_capture</item>
+            </variants>
+        </item>
+        <item id="checkoutapipayment_local_payment">
+            <type>checkbox</type>
+            <default_value>0</default_value>
+        </item>
+        <item id="checkoutapipayment_type">
+            <type>checkbox</type>
+            <default_value>0</default_value>
+        </item>
+        <item id="checkoutapipayment_autocaptime">
+            <type>input</type>
+            <default_value>0</default_value>
+        </item>
+        <item id="checkoutapipayment_timeout">
+            <type>input</type>
+            <default_value>60</default_value>
+        </item>
+    </settings>
+    <install>
+        <sql></sql>
+        <trigger></trigger>
+    </install>
+    <uninstall>
+        <sql></sql>
+        <trigger></trigger>
+    </uninstall>
+</extension>

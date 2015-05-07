@@ -1,0 +1,63 @@
+<?xml version="1.0"?>
+<definitions>
+  <definition>
+    <key>checkoutapipayment_name</key>
+    <value><![CDATA[Checkout.com (Gateway 3.0) ]]></value>
+  </definition>
+  <definition>
+    <key>text_payment</key>
+    <value><![CDATA[Payment]]></value>
+  </definition>
+  <definition>
+    <key>text_success</key>
+    <value><![CDATA[Success: You have modified Checkout.com (Gateway 3.0) account details!]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_mode_test</key>
+    <value><![CDATA[Test]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_mode_live</key>
+    <value><![CDATA[Live]]></value>
+  </definition>  
+  <definition>
+    <key>checkoutapipayment_mode_preprod</key>
+    <value><![CDATA[Preprod]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_method_authorization_only</key>
+    <value><![CDATA[Authorization only]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_method_authorization_capture</key>
+    <value><![CDATA[Authorization and Capture]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_secret_key</key>
+    <value><![CDATA[Secret Key:]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_public_key</key>
+    <value><![CDATA[Public Key:]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_mode</key>
+    <value><![CDATA[Transaction Mode:]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_method</key>
+    <value><![CDATA[Transaction Method:]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_status</key>
+    <value><![CDATA[Status:]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_sort_order</key>
+    <value><![CDATA[Sort Order:<br /><span class="help">Number to indicate display position of this payment in relation to over enabled payments </span>]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_autoselect</key>
+    <value><![CDATA[Auto Select:<br /><span class="help">You can set to skip payment selection page if there is only one payment option. This payment method will be selected automatically</span>]]></value>
+  </definition>	 
+</definitions>
