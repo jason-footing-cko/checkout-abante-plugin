@@ -24,8 +24,7 @@
             <type>selectbox</type>
             <variants>
                 <item>live</item>
-                <item>preprod</item>
-                <item>test</item>
+                <item>sandbox</item>
             </variants>
         </item>
         <item id="checkoutapipayment_method">

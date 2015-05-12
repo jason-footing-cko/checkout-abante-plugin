@@ -83,7 +83,12 @@
         },
     };
 </script>
-<script src="https://www.checkout.com/cdn/js/checkout.js" async ></script>
+<?php   if($mode == 'live') : ?>
+            <script src="https://www.checkout.com/cdn/js/checkout.js" async ></script>
+ <?php  else :?>
+            <script src="//sandbox.checkout.com/js/v1/checkout.js" async ></script>
+ <?php  endif; ?>
+
 <script>
     $('form#checkoutapipayment').submit(function (event) {
         jQuery('#checkoutapipayment_button').prop("disabled", true);

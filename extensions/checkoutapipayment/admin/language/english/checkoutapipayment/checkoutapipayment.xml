@@ -13,17 +13,13 @@
     <value><![CDATA[Success: You have modified Checkout.com (Gateway 3.0) account details!]]></value>
   </definition>
   <definition>
-    <key>checkoutapipayment_mode_test</key>
-    <value><![CDATA[Test]]></value>
+    <key>checkoutapipayment_mode_sandbox</key>
+    <value><![CDATA[Sandbox]]></value>
   </definition>
   <definition>
     <key>checkoutapipayment_mode_live</key>
     <value><![CDATA[Live]]></value>
   </definition>  
-  <definition>
-    <key>checkoutapipayment_mode_preprod</key>
-    <value><![CDATA[Preprod]]></value>
-  </definition>
   <definition>
     <key>checkoutapipayment_method_authorization_only</key>
     <value><![CDATA[Authorization only]]></value>

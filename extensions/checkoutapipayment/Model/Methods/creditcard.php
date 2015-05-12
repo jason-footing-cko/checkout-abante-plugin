@@ -34,6 +34,7 @@ class Model_Methods_creditcard extends Model_Methods_Abstract implements Model_I
             'name'              => $order_info['firstname'] . ' ' . $order_info['lastname'],
             'store_name'        => $order_info['store_name'],
             'paymentToken'      => $paymentTokenArray['token'],
+            'mode'              => $this->config->get('checkoutapipayment_mode'),
             'message'           => $paymentTokenArray['message'],
             'success'           => $paymentTokenArray['success'],
             'eventId'           => $paymentTokenArray['eventId'],
