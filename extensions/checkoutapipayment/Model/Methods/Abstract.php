@@ -76,24 +76,35 @@ abstract class Model_Methods_Abstract extends ControllerResponsesExtensionChecko
                 'quantity' => $item['quantity']
             );
         }
-
+        $billPhoneLength = strlen($order_info['telephone']);
         $billingAddressConfig = array(
             'addressLine1' => $order_info['payment_address_1'],
             'addressLine2' => $order_info['payment_address_2'],
             'postcode'     => $order_info['payment_postcode'],
             'country'      => $order_info['payment_iso_code_2'],
             'city'         => $order_info['payment_city'],
-            'phone'        => array('number' => $order_info['telephone']),
         );
-
+        
+        if ($billPhoneLength > 6){
+              $bilPhoneArray = array(
+                  'phone'  => array('number' => $order_info['telephone'])
+              );
+              $billingAddressConfig = array_merge_recursive($billingAddressConfig, $bilPhoneArray);  
+        }
+        $shipPhoneLength = strlen($order_info['telephone']);
         $shippingAddressConfig = array(
             'addressLine1'  => $order_info['shipping_address_1'],
             'addressLine2'  => $order_info['shipping_address_2'],
             'postcode'      => $order_info['shipping_postcode'],
             'country'       => $order_info['payment_iso_code_2'],
             'city'          => $order_info['shipping_city'],
-            'phone'         => array('number' => $order_info['telephone']),
         );
+        if ($shipPhoneLength > 6){
+              $shipPhoneArray = array(
+                  'phone'  => array('number' => $order_info['telephone'])
+              );
+              $shippingAddressConfig = array_merge_recursive($shippingAddressConfig, $shipPhoneArray);  
+        }
 
         $config['postedParam'] = array_merge($config['postedParam'], array(
             'email'           => $order_info['email'],
@@ -107,7 +118,6 @@ abstract class Model_Methods_Abstract extends ControllerResponsesExtensionChecko
                 'billingDetails' => $billingAddressConfig
             )
         ));
-
         return $config;
     }
 

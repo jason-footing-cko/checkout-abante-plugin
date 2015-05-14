@@ -29,7 +29,6 @@
         currency: '<?php echo $order_currency ?>',
         customerEmail: '<?php echo $email ?>',
         customerName: '<?php echo $name ?>',
-        paymentMode: 'card',
         title: '<?php echo $store_name ?>',
         subtitle: 'Please enter your credit card details',
         widgetContainerSelector: '.widget-container',
