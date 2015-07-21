@@ -96,8 +96,8 @@ class ControllerResponsesExtensionCheckoutapipayment extends AController
 
                 if ($objectCharge->getCaptured()) {
                     
-                    $message = 'Your payment has been successfully completed';
-                    $this->model_checkout_order->update($order_id, ORDER_COMPLETED, $message,true);
+                    $message = 'Your transaction has been successfully captured';
+                    $this->model_checkout_order->update($order_id, ORDER_PROCESSING, $message,true);
                     
                 } elseif ($objectCharge->getRefunded()) {
                     
@@ -112,6 +112,38 @@ class ControllerResponsesExtensionCheckoutapipayment extends AController
             }
         }
 
+        //init controller data
+        $this->extensions->hk_UpdateData($this, __FUNCTION__);
+    }
+    
+    //This is Checkout.com gw success callback
+    public function success()
+    {
+        //init controller data
+        $this->extensions->hk_InitData($this, __FUNCTION__);
+        $this->loadLanguage('checkoutapipayment/checkoutapipayment');
+
+        $paymentToken = $this->request->post['cko-payment-token'];
+
+        $config['authorization'] = $this->config->get('checkoutapipayment_secret_key');
+        $config['paymentToken'] = $paymentToken;
+
+        $Api = CheckoutApi_Api::getApi(array('mode' => $this->config->get('checkoutapipayment_mode')));
+        $objectCharge = $Api->verifyChargePaymentToken($config);
+        
+        $order_id = $objectCharge->getTrackId();
+        $this->load->model('checkout/order');
+        
+        if (preg_match('/^1[0-9]+$/', $objectCharge->getResponseCode())) {
+          
+          $message = 'Your transaction has been successfully authorized with transaction id : ' . $objectCharge->getId();
+          $this->model_checkout_order->update($order_id, ORDER_PROCESSING, $message);
+          $this->redirect($this->html->getSecureURL('checkout/success'));
+          
+        } else {
+          $Payment_Error = 'Transaction failed : ' . $objectCharge->getErrorMessage() . ' with response code : ' . $objectCharge->getResponseCode();
+          $this->model_checkout_order->addHistory($order_id, 0, $Payment_Error);
+        } 
         //init controller data
         $this->extensions->hk_UpdateData($this, __FUNCTION__);
     }

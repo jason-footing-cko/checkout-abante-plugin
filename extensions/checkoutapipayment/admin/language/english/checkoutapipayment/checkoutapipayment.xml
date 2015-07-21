@@ -29,6 +29,34 @@
     <value><![CDATA[Authorization and Capture]]></value>
   </definition>
   <definition>
+    <key>checkoutapipayment_logourl</key>
+    <value><![CDATA[Logo Url]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_themecolor</key>
+    <value><![CDATA[Theme Color]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_buttoncolor</key>
+    <value><![CDATA[Button Color]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_iconcolor</key>
+    <value><![CDATA[Icon Color]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_currencycode</key>
+    <value><![CDATA[Currency Format]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_currencycode_code</key>
+    <value><![CDATA[Code]]></value>
+  </definition>
+  <definition>
+    <key>checkoutapipayment_currencycode_symbol</key>
+    <value><![CDATA[Symbol]]></value>
+  </definition>
+  <definition>
     <key>checkoutapipayment_secret_key</key>
     <value><![CDATA[Secret Key:]]></value>
   </definition>

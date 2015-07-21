@@ -23,14 +23,11 @@ abstract class Model_Methods_Abstract extends ControllerResponsesExtensionChecko
 
             if (preg_match('/^1[0-9]+$/', $respondCharge->getResponseCode())) {
                 $message = 'Your transaction has been successfully authorized with transaction id : ' . $respondCharge->getId();
-
-                $this->model_checkout_order->confirm($this->session->data['order_id'], ORDER_PENDING, $message);
-
+                $this->model_checkout_order->confirm($this->session->data['order_id'], ORDER_PROCESSING, $message);
                 $json['success'] = $this->html->getSecureURL('checkout/success');
             }
             else {
                 $Payment_Error = 'Transaction failed : ' . $respondCharge->getErrorMessage() . ' with response code : ' . $respondCharge->getResponseCode();
-
                 $this->model_checkout_order->addHistory($this->session->data['order_id'], 0, $Payment_Error);
                 $json['error'] = 'We are sorry, but you transaction could not be processed. Please verify your card information and try again.';
             }

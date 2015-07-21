@@ -50,6 +50,29 @@
             <type>input</type>
             <default_value>60</default_value>
         </item>
+        <item id="checkoutapipayment_logourl">
+            <type>input</type>
+            <default_value></default_value>
+        </item>
+        <item id="checkoutapipayment_themecolor">
+            <type>input</type>
+            <default_value></default_value>
+        </item>
+        <item id="checkoutapipayment_buttoncolor">
+            <type>input</type>
+            <default_value></default_value>
+        </item>
+        <item id="checkoutapipayment_currencycode">
+            <type>selectbox</type>
+            <variants>
+                <item>code</item>
+                <item>symbol</item>
+            </variants>
+        </item>
+        <item id="checkoutapipayment_iconcolor">
+            <type>input</type>
+            <default_value></default_value>
+        </item>
     </settings>
     <install>
         <sql></sql>
