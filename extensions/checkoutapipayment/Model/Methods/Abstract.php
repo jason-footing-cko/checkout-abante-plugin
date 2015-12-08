@@ -15,14 +15,28 @@ abstract class Model_Methods_Abstract extends ControllerResponsesExtensionChecko
        $this->load->model('checkout/order');
 
         $order_info = $this->model_checkout_order->getOrder($this->session->data['order_id']);
-
+        $amountCents = (int) (($this->currency->format($order_info['total'],'',false,false)) * 100);
         //building charge
         $respondCharge = $this->_createCharge($order_info);
+        $toValidate = array(
+          'currency' => $this->currency->getCode(),
+          'value' => $amountCents,
+          'trackId' => $this->session->data['order_id'],
+        );
+        
+        $Api = CheckoutApi_Api::getApi(array('mode' => $this->config->get('checkoutapipayment_mode')));
+        $validateRequest = $Api::validateRequest($toValidate,$respondCharge);
 
         if ($respondCharge->isValid()) {
 
             if (preg_match('/^1[0-9]+$/', $respondCharge->getResponseCode())) {
-                $message = 'Your transaction has been successfully authorized with transaction id : ' . $respondCharge->getId();
+              $message = 'Your transaction has been successfully authorized with transaction id : ' . $respondCharge->getId();
+              if(!$validateRequest['status']){  
+                  foreach($validateRequest['message'] as $errormessage){
+                    $message .= $errormessage . '. ';
+                  }
+                }
+
                 $this->model_checkout_order->confirm($this->session->data['order_id'], ORDER_PROCESSING, $message);
                 $json['success'] = $this->html->getSecureURL('checkout/success');
             }

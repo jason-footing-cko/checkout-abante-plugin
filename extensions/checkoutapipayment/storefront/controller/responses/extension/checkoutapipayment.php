@@ -132,11 +132,25 @@ class ControllerResponsesExtensionCheckoutapipayment extends AController
         $objectCharge = $Api->verifyChargePaymentToken($config);
         
         $order_id = $objectCharge->getTrackId();
+        $order_info = $this->model_checkout_order->getOrder($order_id);
+        $amountCents = (int) (($this->currency->format($order_info['total'],'',false,false)) * 100);
         $this->load->model('checkout/order');
+        $toValidate = array(
+          'currency' => $this->currency->getCode(),
+          'value' => $amountCents,
+          'trackId' => $order_id,
+        );
+        
+        $validateRequest = $Api::validateRequest($toValidate,$objectCharge);
         
         if (preg_match('/^1[0-9]+$/', $objectCharge->getResponseCode())) {
-          
           $message = 'Your transaction has been successfully authorized with transaction id : ' . $objectCharge->getId();
+          if(!$validateRequest['status']){  
+            foreach($validateRequest['message'] as $errormessage){
+              $message .= $errormessage . '. ';
+            }
+    
+          }
           $this->model_checkout_order->update($order_id, ORDER_PROCESSING, $message);
           $this->redirect($this->html->getSecureURL('checkout/success'));
           
