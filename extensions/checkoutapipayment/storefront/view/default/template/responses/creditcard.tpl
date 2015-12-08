@@ -31,15 +31,17 @@
         currency: '<?php echo $order_currency ?>',
         customerEmail: '<?php echo $email ?>',
         customerName: '<?php echo $name ?>',
-        logoUrl: '<?php echo $logourl ?>',
-        themeColor: '<?php echo $themecolor ?>',
-        buttonColor: '<?php echo $buttoncolor ?>',
-        iconColor: '<?php echo $iconcolor ?>',
         useCurrencyCode: '<?php echo $currencyformat ?>',
         title: '<?php echo $store_name ?>',
         forceMobileRedirect: true,
         subtitle: 'Please enter your credit card details',
         widgetContainerSelector: '.widget-container',
+        styling: {
+            themeColor: '<?php echo $themecolor ?>',
+            buttonColor:'<?php echo $buttoncolor ?>',
+            logoUrl: '<?php echo $logourl ?>',
+            iconColor: '<?php echo $iconcolor ?>',
+        },
         cardCharged: function (event) {
             confirmSubmit();
         },
